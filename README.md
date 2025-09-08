@@ -50,3 +50,5 @@ projeto_poo_competicoes/
   sql/schema.sql
   main.py
 ```
+## Componente
+- Maria Paula Felix

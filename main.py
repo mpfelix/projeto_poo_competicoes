@@ -11,3 +11,4 @@ if __name__ == "__main__":
     except Exception as e:
         QMessageBox.critical(None, "Erro fatal", str(e))
         sys.exit(1)
+

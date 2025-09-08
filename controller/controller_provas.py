@@ -17,3 +17,4 @@ class ControllerProvas:
     @staticmethod
     def listar_resultados():
         return ResultadoRepository.listar()
+

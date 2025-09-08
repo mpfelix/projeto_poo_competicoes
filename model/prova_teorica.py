@@ -7,3 +7,4 @@ class ProvaTeorica(Prova):
 
     def calcular_pontuacao(self, acertos):
         return (acertos / self.numero_questoes) * self.pontuacao_maxima
+

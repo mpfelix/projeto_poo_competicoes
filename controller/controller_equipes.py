@@ -17,3 +17,4 @@ class ControllerEquipes:
     @staticmethod
     def listar_membros(equipe_id):
         return MembroRepository.listar_por_equipe(equipe_id)
+

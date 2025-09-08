@@ -35,3 +35,4 @@ class ListagemDialog(QDialog):
         layout.addWidget(btn_fechar)
 
         self.setLayout(layout)
+
