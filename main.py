@@ -1,6 +1,8 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMessageBox
+from PyQt5.QtWidgets import QApplication, QMessageBox, QMainWindow
 from view.main_window import MainWindow
+from view.listagem_dialog import ListagemDialog
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

@@ -40,4 +40,3 @@ class ResultadosWindow(QWidget):
             self.tab_pr.setItem(r, 1, QTableWidgetItem(nome))
             self.tab_pr.setItem(r, 2, QTableWidgetItem(tipo))
             self.tab_pr.setItem(r, 3, QTableWidgetItem(str(max_)))
-

@@ -1,7 +1,18 @@
 from model.repositories import EquipeRepository, MembroRepository
 
 class ControllerEquipes:
+    def __init__(self):
+        self.equipes = []  # Lista que vai guardar as equipes cadastradas
 
+    def cadastrar_equipe(self, nome, membros):
+        equipe = {
+            "nome": nome,
+            "membros": membros
+        }
+        self.equipes.append(equipe)
+        print("Equipe cadastrada:", equipe)
+        return equipe
+    
     @staticmethod
     def criar_equipe(nome):
         return EquipeRepository.criar(nome)

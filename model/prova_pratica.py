@@ -10,4 +10,3 @@ class ProvaPratica(Prova):
             return self.pontuacao_maxima
         else:
             return max(0, self.pontuacao_maxima - (tempo_gasto - self.tempo_limite))
-

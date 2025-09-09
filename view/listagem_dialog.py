@@ -1,38 +1,39 @@
-from PyQt5.QtWidgets import QDialog, QVBoxLayout, QListWidget, QPushButton
-from controller.controller_equipes import ControllerEquipes
-from controller.controller_provas import ControllerProvas
-from model.repositories import ResultadoRepository
+from PyQt5.QtWidgets import QDialog, QVBoxLayout, QPushButton, QTableWidget, QTableWidgetItem
 
 class ListagemDialog(QDialog):
-    def __init__(self, tipo="equipes"):
-        super().__init__()
-        self.setWindowTitle(f"Listagem de {tipo.capitalize()}")
-        self.setGeometry(200, 200, 400, 300)
+    def __init__(self, titulo, dados, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle(titulo)
+        self.resize(400, 300)
 
         layout = QVBoxLayout()
-        self.lista = QListWidget()
 
-        if tipo == "equipes":
-            controller = ControllerEquipes()
-            dados = controller.listar_equipes()
-            for e in dados:
-                self.lista.addItem(f"ID {e[0]} - {e[1]}")
-        elif tipo == "provas":
-            controller = ControllerProvas()
-            dados = controller.listar_provas()
-            for p in dados:
-                self.lista.addItem(f"ID {p[0]} - {p[1]} ({p[2]}) - Máx {p[3]}")
-        elif tipo == "resultados":
-            repo = ResultadoRepository()
-            dados = repo.listar()
-            for r in dados:
-                self.lista.addItem(f"Equipe {r[0]} - Prova {r[1]} - Pontos {r[2]}")
+        # Tabela para exibir os dados
+        self.table = QTableWidget()
+        layout.addWidget(self.table)
 
+        # Botão de fechar
         btn_fechar = QPushButton("Fechar")
         btn_fechar.clicked.connect(self.close)
-
-        layout.addWidget(self.lista)
         layout.addWidget(btn_fechar)
 
         self.setLayout(layout)
 
+        # Preenche a tabela com os dados
+        self.carregar_dados(dados)
+
+    def carregar_dados(self, dados):
+        if not dados:
+            self.table.setRowCount(0)
+            self.table.setColumnCount(0)
+            return
+
+        # Assume que todos os itens têm as mesmas chaves
+        colunas = list(dados[0].keys())
+        self.table.setColumnCount(len(colunas))
+        self.table.setHorizontalHeaderLabels(colunas)
+        self.table.setRowCount(len(dados))
+
+        for row, item in enumerate(dados):
+            for col, chave in enumerate(colunas):
+                self.table.setItem(row, col, QTableWidgetItem(str(item[chave])))

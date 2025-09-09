@@ -39,4 +39,3 @@ class EquipeDialog(QDialog):
         self.controller.cadastrar_equipe(nome, membros)
         QMessageBox.information(self, "Sucesso", f"Equipe '{nome}' cadastrada!")
         self.close()
-

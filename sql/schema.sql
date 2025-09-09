@@ -23,4 +23,3 @@ CREATE TABLE IF NOT EXISTS provas (
     num_questoes INT NULL,
     tempo_limite INT NULL
 );
-

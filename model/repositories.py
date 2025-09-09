@@ -132,4 +132,3 @@ class ResultadoRepository:
         except Error as e:
             print("Erro ao listar resultados:", e)
             return []
-

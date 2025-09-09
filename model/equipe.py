@@ -6,4 +6,3 @@ class Equipe:
 
     def adicionar_membro(self, membro):
         self.membros.append(membro)
-

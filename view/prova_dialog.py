@@ -45,4 +45,3 @@ class ProvaDialog(QDialog):
         self.controller.cadastrar_prova(nome, tipo, pontos)
         QMessageBox.information(self, "Sucesso", f"Prova '{nome}' cadastrada!")
         self.close()
-

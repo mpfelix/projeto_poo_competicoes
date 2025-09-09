@@ -9,4 +9,3 @@ class Prova(ABC):
     @abstractmethod
     def calcular_pontuacao(self, *args):
         pass
-
