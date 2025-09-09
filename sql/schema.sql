@@ -23,3 +23,16 @@ CREATE TABLE IF NOT EXISTS provas (
     num_questoes INT NULL,
     tempo_limite INT NULL
 );
+
+
+CREATE TABLE IF NOT EXISTS resultados (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    equipe_id INT NOT NULL,
+    prova_id INT NOT NULL,
+    pontuacao INT NOT NULL DEFAULT 0,
+    CONSTRAINT fk_resultados_equipes FOREIGN KEY (equipe_id)
+      REFERENCES equipes(id) ON DELETE CASCADE,
+    CONSTRAINT fk_resultados_provas FOREIGN KEY (prova_id)
+      REFERENCES provas(id) ON DELETE CASCADE,
+    UNIQUE KEY uq_resultado (equipe_id, prova_id) -- garante 1 resultado por equipe/prova
+);

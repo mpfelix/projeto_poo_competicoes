@@ -37,3 +37,17 @@ class ListagemDialog(QDialog):
         for row, item in enumerate(dados):
             for col, chave in enumerate(colunas):
                 self.table.setItem(row, col, QTableWidgetItem(str(item[chave])))
+                
+    def listar_resultados(self):
+        sql = """
+        SELECT p.nome AS Prova, e.nome AS Equipe, r.pontuacao AS Pontuação
+        FROM resultados r
+        JOIN equipes e ON r.equipe_id = e.id
+        JOIN provas p ON r.prova_id = p.id
+        ORDER BY p.nome, r.pontuacao DESC
+        """
+        self.cur.execute(sql)
+        rows = self.cur.fetchall()
+
+        # já vem como dict porque usamos cursor(dictionary=True)
+        return rows if rows else []

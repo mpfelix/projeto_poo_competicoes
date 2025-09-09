@@ -1,20 +1,20 @@
 import mysql.connector
-from mysql.connector import Error
 
-# Configuração do banco
-DB_CONFIG = {
-    "host": "localhost",
-    "user": "root",
-    "password": "",   # coloque sua senha do MySQL se tiver
-    "database": "competicões"
-}
-
-def get_connection():
-    """Cria e retorna uma conexão com o banco de dados MySQL"""
-    try:
-        conn = mysql.connector.connect(**DB_CONFIG)
-        if conn.is_connected():
+class Database:
+    @staticmethod
+    def conectar():
+        """
+        Cria e retorna a conexão com o banco de dados MySQL.
+        Ajuste os parâmetros conforme sua configuração.
+        """
+        try:
+            conn = mysql.connector.connect(
+                host="localhost",
+                user="root",       # seu usuário do MySQL
+                password="",       # sua senha do MySQL
+                database="competicoes"
+            )
             return conn
-    except Error as e:
-        print("Erro ao conectar ao MySQL:", e)
-        return None
+        except mysql.connector.Error as e:
+            print(f"Erro ao conectar ao banco de dados: {e}")
+            raise
