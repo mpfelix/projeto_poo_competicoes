@@ -5,7 +5,7 @@ O objetivo é criar um sistema em **Python + PyQt5** para gerenciar **equipes, p
 
 ---
 
-##  Autora
+##  Componente
 - Maria Paula Felix
 
 ---
