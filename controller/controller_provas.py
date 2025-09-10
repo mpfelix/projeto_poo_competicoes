@@ -1,29 +1,14 @@
-from model.repositories import ProvaRepository, ResultadoRepository
+from model.prova import ProvaRepository
 
 class ControllerProvas:
     def __init__(self):
-        # aqui vamos armazenar as provas cadastradas em memória (lista simples)
-        self.provas = []
+        self.repo = ProvaRepository()
 
-    def cadastrar_prova(self, nome, tipo, pontos):
-        """
-        Cadastra uma nova prova no sistema
-        :param nome: Nome da prova (str)
-        :param tipo: Tipo da prova (str)
-        :param pontos: Pontos da prova (int ou float)
-        """
-        prova = {
-            "nome": nome,
-            "tipo": tipo,
-            "pontos": pontos
-        }
+    def adicionar_prova_teorica(self, titulo, pontuacao_maxima, num_questoes):
+        return self.repo.adicionar_prova_teorica(titulo, pontuacao_maxima, num_questoes)
 
-        self.provas.append(prova)
-        print(f"✅ Prova cadastrada: {prova}")
-        return prova
+    def adicionar_prova_pratica(self, titulo, pontuacao_maxima, tempo_execucao):
+        return self.repo.adicionar_prova_pratica(titulo, pontuacao_maxima, tempo_execucao)
 
     def listar_provas(self):
-        """
-        Retorna todas as provas cadastradas
-        """
-        return self.provas
+        return self.repo.listar_provas()

@@ -1,54 +1,49 @@
-# Sistema de Competições (POO + PyQt5 + MySQL)
+# Projeto POO - Sistema de Competições
 
-Projeto acadêmico com organização em camadas (model / view / controller), interface PyQt5 e persistência em MySQL.
+Trabalho desenvolvido para a disciplina de **Programação Orientada a Objetos (POO)**.  
+O objetivo é criar um sistema em **Python + PyQt5** para gerenciar **equipes, provas e resultados** em competições acadêmicas, aplicando conceitos de **classes, herança, polimorfismo e encapsulamento**.
 
-## Requisitos
-- Python 3.10+
-- MySQL Server funcionando localmente
-- Biblioteca: `PyQt5`, `mysql-connector-python`
+---
 
-## Instalação
-```bash
-# (opcional) criar venv
-python -m venv .venv
-# Windows
-.venv\Scripts\activate
-# Linux/Mac
-source .venv/bin/activate
+##  Autora
+- Maria Paula Felix
 
-pip install -r requirements.txt
-```
-
-## Banco de Dados
-Crie o schema e tabelas executando o script:
-```sql
--- no cliente do MySQL
-SOURCE caminho/para/sql/schema.sql;
-```
-Ou copie e cole o conteúdo manualmente.
-
-## Configuração da conexão
-Edite `model/database.py` e ajuste `host`, `user`, `password` e `database`.
-
-## Executar
-```bash
-python main.py
-```
+---
 
 ## Funcionalidades
-- Cadastrar **equipes** e **membros** (CRUD)
-- Cadastrar **provas** (teórica / prática) com **polimorfismo** no cálculo da pontuação
-- Visualizar resultados (listagens)
-- Tratamento de erros com `try/except` e mensagens para o usuário
+O sistema permite:
+-  **Cadastrar equipes** e adicionar/remover membros manualmente  
+-  **Cadastrar provas** teóricas e práticas  
+  - Prova Teórica → número de questões  
+  - Prova Prática → tempo limite  
+-  **Calcular pontuação** automaticamente (usando **polimorfismo**)  
+-  **Visualizar resultados** em tela gráfica  
+-  **Tratar erros** com `try/except` e mensagens para o usuário  
+-  **Armazenar dados** em listas ou banco MySQL (opcional)  
 
-## Estrutura
-```
+---
+
+##  Estrutura do Projeto
+
 projeto_poo_competicoes/
-  controller/
-  model/
-  view/
-  sql/schema.sql
-  main.py
-```
-## Componente
-- Maria Paula Felix
+│── main.py # Arquivo principal da aplicação
+│── requirements.txt # Dependências do projeto
+│── README.md # Documentação
+│
+├── controller/ # Controladores (ligam model ↔ view)
+│ ├── controller_equipes.py
+│ ├── controller_provas.py
+│ ├── controller_resultados.py
+│
+├── model/ # Regras de negócio e dados
+│ ├── equipe.py
+│ ├── prova.py
+│ ├── resultado.py
+│ ├── database.py (opcional p/ MySQL)
+│
+└── view/ # Telas gráficas (QtDesigner)
+├── tela_principal.ui / .py
+├── cadastro_equipes.ui / .py
+├── cadastro_provas.ui / .py
+├── cadastro_membros.ui / .py
+├── visualizar_resultados.ui / .py

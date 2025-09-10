@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VisualizarResultados</class>
+ <widget class="QWidget" name="VisualizarResultados">
+  <property name="windowTitle">
+   <string>Resultados</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QListWidget" name="lista_resultados"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

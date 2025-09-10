@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CadastroEquipes</class>
+ <widget class="QWidget" name="CadastroEquipes">
+  <property name="windowTitle">
+   <string>Cadastro de Equipes</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLineEdit" name="input_nome">
+     <property name="placeholderText">
+      <string>Nome da equipe</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btn_adicionar">
+     <property name="text">
+      <string>Adicionar Equipe</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QListWidget" name="lista_equipes"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

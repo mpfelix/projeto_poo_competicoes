@@ -1,25 +1,35 @@
-from model.database import Database
-
 class Equipe:
-    def __init__(self, id, nome):
-        self.id = id
+    def __init__(self, nome):
         self.nome = nome
+        self.membros = []
+
+    def adicionar_membro(self, nome_membro):
+        if nome_membro not in self.membros:
+            self.membros.append(nome_membro)
+
+    def __repr__(self):
+        return f"Equipe({self.nome}, membros={len(self.membros)})"
 
 
 class EquipeRepository:
-    @staticmethod
-    def listar():
-        conn = Database.conectar()
-        cur = conn.cursor(dictionary=True)
-        cur.execute("SELECT id, nome FROM equipes")
-        rows = cur.fetchall()
-        conn.close()
-        return [Equipe(r["id"], r["nome"]) for r in rows]
+    def __init__(self):
+        self.equipes = []
 
-    @staticmethod
-    def adicionar(nome):
-        conn = Database.conectar()
-        cur = conn.cursor()
-        cur.execute("INSERT INTO equipes (nome) VALUES (%s)", (nome,))
-        conn.commit()
-        conn.close()
+    def adicionar_equipe(self, nome):
+        # Evitar duplicatas
+        for e in self.equipes:
+            if e.nome == nome:
+                return e
+        equipe = Equipe(nome)
+        self.equipes.append(equipe)
+        return equipe
+
+    def adicionar_membro(self, nome_equipe, nome_membro):
+        for equipe in self.equipes:
+            if equipe.nome == nome_equipe:
+                equipe.adicionar_membro(nome_membro)
+                return True
+        return False
+
+    def listar_equipes(self):
+        return self.equipes

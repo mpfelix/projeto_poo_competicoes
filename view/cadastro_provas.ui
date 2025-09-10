@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CadastroProvas</class>
+ <widget class="QWidget" name="CadastroProvas">
+  <property name="windowTitle">
+   <string>Cadastro de Provas</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLineEdit" name="input_nome">
+     <property name="placeholderText">
+      <string>Título da prova</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QComboBox" name="combo_tipo">
+     <item>
+      <property name="text">
+       <string>Teórica</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Prática</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="input_questoes">
+     <property name="placeholderText">
+      <string>Número de questões (se Teórica)</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="input_tempo">
+     <property name="placeholderText">
+      <string>Tempo de execução (min, se Prática)</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btn_adicionar">
+     <property name="text">
+      <string>Adicionar Prova</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QListWidget" name="lista_provas"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
