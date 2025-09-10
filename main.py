@@ -4,7 +4,7 @@ from controller.controller_equipes import ControllerEquipes
 from controller.controller_provas import ControllerProvas
 from controller.controller_resultados import ControllerResultados
 
-# Importando as telas convertidas do Qt Designer
+
 from view.tela_principal import Ui_TelaPrincipal
 from view.cadastro_equipes import Ui_CadastroEquipes
 from view.cadastro_provas import Ui_CadastroProvas
@@ -12,45 +12,44 @@ from view.visualizar_resultados import Ui_VisualizarResultados
 from view.cadastro_membros import Ui_CadastroMembros
 
 
-# ==================== TELA PRINCIPAL ====================
+
 class TelaPrincipal(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_TelaPrincipal()
         self.ui.setupUi(self)
 
-        # Controllers
+       
         self.equipes_ctrl = ControllerEquipes()
         self.provas_ctrl = ControllerProvas()
         self.resultados_ctrl = ControllerResultados()
 
-        # Popular dados de exemplo
+        
         self._popular_dados()
 
-        # Conectar botões
+        
         self.ui.btn_equipes.clicked.connect(self.abrir_equipes)
         self.ui.btn_membros.clicked.connect(self.abrir_membros)
         self.ui.btn_provas.clicked.connect(self.abrir_provas)
         self.ui.btn_resultados.clicked.connect(self.abrir_resultados)
 
     def _popular_dados(self):
-        # Criar equipes
+        
         self.equipes_ctrl.adicionar_equipe("Equipe Falcões")
         self.equipes_ctrl.adicionar_equipe("Equipe Águias")
         self.equipes_ctrl.adicionar_equipe("Equipe Leões")
 
-        # Adicionar membros
+     
         self.equipes_ctrl.adicionar_membro("Equipe Falcões", "Ana Silva")
         self.equipes_ctrl.adicionar_membro("Equipe Falcões", "Carlos Souza")
         self.equipes_ctrl.adicionar_membro("Equipe Águias", "Beatriz Lima")
         self.equipes_ctrl.adicionar_membro("Equipe Águias", "Marcos Rocha")
         self.equipes_ctrl.adicionar_membro("Equipe Leões", "João Pedro")
 
-        # Criar provas
+       
         self.provas_ctrl.adicionar_prova_teorica("Prova Teórica 1", 100, 20)
         self.provas_ctrl.adicionar_prova_pratica("Prova Prática 1", 100, 60)
 
-        # Criar resultados
         self.resultados_ctrl.adicionar_resultado("Equipe Falcões", "Prova Teórica 1", 85.0)
         self.resultados_ctrl.adicionar_resultado("Equipe Águias", "Prova Teórica 1", 70.0)
         self.resultados_ctrl.adicionar_resultado("Equipe Leões", "Prova Prática 1", 95.0)
@@ -72,7 +71,7 @@ class TelaPrincipal(QMainWindow):
         self.janela_membros.show()
 
 
-# ==================== TELA EQUIPES ====================
+
 class TelaEquipes(QWidget):
     def __init__(self, equipes_ctrl):
         super().__init__()
@@ -80,7 +79,7 @@ class TelaEquipes(QWidget):
         self.ui.setupUi(self)
         self.equipes_ctrl = equipes_ctrl
 
-        # Conectar botão de adicionar equipe
+      
         self.ui.btn_adicionar.clicked.connect(self.adicionar_equipe)
 
     def adicionar_equipe(self):
@@ -91,7 +90,7 @@ class TelaEquipes(QWidget):
             self.ui.input_nome.clear()
 
 
-# ==================== TELA PROVAS ====================
+
 class TelaProvas(QWidget):
     def __init__(self, provas_ctrl):
         super().__init__()
@@ -99,7 +98,7 @@ class TelaProvas(QWidget):
         self.ui.setupUi(self)
         self.provas_ctrl = provas_ctrl
 
-        # Conectar botão
+       
         self.ui.btn_adicionar.clicked.connect(self.adicionar_prova)
 
     def adicionar_prova(self):
@@ -119,7 +118,6 @@ class TelaProvas(QWidget):
             self.ui.input_tempo.clear()
 
 
-# ==================== TELA RESULTADOS ====================
 class TelaResultados(QWidget):
     def __init__(self, resultados_ctrl):
         super().__init__()
@@ -127,12 +125,11 @@ class TelaResultados(QWidget):
         self.ui.setupUi(self)
         self.resultados_ctrl = resultados_ctrl
 
-        # Carregar resultados
+       
         for r in self.resultados_ctrl.listar_resultados():
             self.ui.lista_resultados.addItem(f"{r['equipe']} - {r['prova']}: {r['pontuacao']}")
 
 
-# ==================== TELA MEMBROS ====================
 class TelaMembros(QWidget):
     def __init__(self, equipes_ctrl):
         super().__init__()
@@ -140,7 +137,7 @@ class TelaMembros(QWidget):
         self.ui.setupUi(self)
         self.equipes_ctrl = equipes_ctrl
 
-        # Conectar botão
+        
         self.ui.btn_adicionar.clicked.connect(self.adicionar_membro)
 
     def adicionar_membro(self):
@@ -152,7 +149,6 @@ class TelaMembros(QWidget):
             self.ui.input_nome.clear()
 
 
-# ==================== MAIN ====================
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = TelaPrincipal()
